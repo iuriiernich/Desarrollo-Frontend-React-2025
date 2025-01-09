@@ -1,13 +1,16 @@
 import './App.css'
-import Default from './Components/Default.jsx'; 
+import Logo from './Components/Logo.jsx'; 
+import Body from './Components/Body.jsx';
+import Footer from './Components/Footer.jsx';
 
 
 function App() {
 
   return (
     <>
-      <Default />
-      
+      <Logo />
+      <Body />  
+      <Footer />  
     </>
   )
 }
