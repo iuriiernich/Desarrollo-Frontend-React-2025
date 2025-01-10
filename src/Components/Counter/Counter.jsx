@@ -10,7 +10,7 @@ const Counter = () => {
   return (
     <div>
       <div>
-        <span>{isLogged}</span>
+      <div><span>{isLogged}</span></div>
         <button
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
