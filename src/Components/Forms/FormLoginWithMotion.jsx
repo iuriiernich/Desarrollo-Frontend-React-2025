@@ -1,5 +1,5 @@
 import { motion } from "motion/react"
-import useForm from "../hooks/useForm.js";
+import useForm from "../Hooks/useForm.js";
 // eslint-disable-next-line react/prop-types
 const FormWithMotionAndHook = ({titleForm}) => {
     const {formData, handleChange} = useForm({
