@@ -11,7 +11,7 @@ import App from './App.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/Desarrollo-Frontend-React-2025/">
         <App />
       </BrowserRouter>
     </Provider>
