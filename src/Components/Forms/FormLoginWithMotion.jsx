@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { setFormData } from "../../store/form/formSlice.js";
 import { motion } from "motion/react";
 import { titleCase } from "title-case";
 import useForm from "../Hooks/useForm.js";
@@ -10,7 +11,7 @@ const FormWithMotionAndHook = ({ titleForm }) => {
     const { module, password: storedPassword } = useSelector((state) => state.form.loginForm);
     const dispatch = useDispatch();
 
-    const { formData, handleChange, resetForm } = useForm({
+    const { formData, handleChange } = useForm({
         module: module,
         username: '',
         email: '',
@@ -23,7 +24,7 @@ const FormWithMotionAndHook = ({ titleForm }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Verificar que todos los campos estén llenos
+
         const { module, username, email, password } = formData;
         if (!module || !username || !email || !password) {
             setModalMessage("Todos los campos son requeridos.");
@@ -33,11 +34,9 @@ const FormWithMotionAndHook = ({ titleForm }) => {
         }
 
         if (password === storedPassword) { // Usar el password del store para la validación
-            // Guardar en el store
-            dispatch({
-                type: "SAVE_FORM_DATA",
-                payload: { module, username, email, password },
-            });
+            // Despachar la acción para guardar en el store
+            dispatch(setFormData({ module, username, email, password }));  // Usamos setFormData de formSlice.js para actualizar el store
+
 
             // Mostrar modal de éxito
             setModalMessage(`Bienvenido: ${titleCase(username)}`);
@@ -53,7 +52,6 @@ const FormWithMotionAndHook = ({ titleForm }) => {
 
     const onCloseModalInfo = () => {
         setShowModal(false);
-        resetForm(); // Reiniciar el formulario después de cerrar el modal
     };
 
     return (

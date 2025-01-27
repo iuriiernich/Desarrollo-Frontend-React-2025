@@ -123,3 +123,20 @@
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+/* Estilos para el mensaje de bienvenida */
+.welcome-message {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+.welcome-message span {
+  font-style: italic;
+}
+
+.welcome-message:hover {
+  color: #5378c3; /* Cambiar el color al hacer hover */
+  cursor: pointer;
+}

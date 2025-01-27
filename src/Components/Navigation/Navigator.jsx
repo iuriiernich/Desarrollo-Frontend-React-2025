@@ -1,6 +1,9 @@
 import { Link } from "react-router";
+import { useSelector } from "react-redux";
 
 const Navigator = () => {
+    const { username, email } = useSelector((state) => state.form.loginForm);
+
     return (
         <nav className="navbar">
             <Link to="/" className="nav-link">Home</Link>
@@ -10,6 +13,13 @@ const Navigator = () => {
             <Link to="/products" className="nav-link">Product</Link>
             <Link to="/about" className="nav-link">About</Link>
             <Link to="/landingpage" className="nav-link">LandingPage</Link>
+
+
+            {username && email ? (
+                <span className="welcome-message">
+                    Bienvenido {username} | {email}
+                </span>
+            ) : null}
         </nav>
     );
 };

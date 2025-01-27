@@ -17,21 +17,19 @@ const formSlice = createSlice({
   reducers: {
     setFormData: (state, action) => {
       const { module, username, email, password } = action.payload;
+
+      // Verifica que datos están llegando al reducer
+      //console.log('Datos recibidos en setFormData:', action.payload);
+
       if (password === PASSWORD) {
-        state.module = module,
-        state.username = username;
-        state.email = email;
-        state.password = password;
+        state.loginForm.module = module;
+        state.loginForm.username = username;
+        state.loginForm.email = email;
+        state.loginForm.password = password; 
       }
-    },
-    resetFormData: (state) => {
-      state.module = '';
-      state.username = '';
-      state.email = '';
-      state.password = PASSWORD;
     },
   },
 });
 
-export const { setFormData, resetFormData } = formSlice.actions;
+export const { setFormData } = formSlice.actions;
 export default formSlice.reducer;
