@@ -11,7 +11,7 @@ const useForm = (initialState = {}) => {
   };
 
   const resetForm = () => {
-    setFormData(initialState);
+    setFormData(initialState.reset());
   };
 
    return {

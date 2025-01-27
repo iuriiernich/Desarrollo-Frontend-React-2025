@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { useState, resetForm, reset } from "react";
+import { useState, reset } from "react";
 import useForm from "../Hooks/useForm.js";
 import { resetFormData } from "../../store/form/formSlice.js";
 
@@ -13,13 +13,12 @@ const Navigator = () => {
     const [showLogoutModal, setShowLogoutModal] = useState(false);
   
     // Usar el hook useForm con estado inicial vacío para el formulario
-    const { clearForm } = useForm({ module: '', username: '', email: '', password: '' });
+    const { resetForm } = useForm();
   
     const handleLogout = () => {
       dispatch(resetFormData());
       setShowLogoutModal(false);
       reset();
-      clearForm();
       resetForm();
     };
   
