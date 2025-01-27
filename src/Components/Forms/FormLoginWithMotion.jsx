@@ -1,32 +1,60 @@
-import { useState } from "react"
-import { useSelector } from "react-redux";
-import { motion } from "motion/react"
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { motion } from "motion/react";
+import { titleCase } from "title-case";
 import useForm from "../Hooks/useForm.js";
 import ModalInfo from "../Modals/ModalInfo.jsx";
 
 // eslint-disable-next-line react/prop-types
 const FormWithMotionAndHook = ({ titleForm }) => {
-    const moduleValue = useSelector((state) => state.form.loginForm.module);
+    const { module, password: storedPassword } = useSelector((state) => state.form.loginForm);
+    const dispatch = useDispatch();
 
-    const { formData, handleChange } = useForm({
-        module: moduleValue,
+    const { formData, handleChange, resetForm } = useForm({
+        module: module,
         username: '',
         email: '',
         password: '',
     });
 
     const [showModal, setShowModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+    const [modalType, setModalType] = useState("");
 
-      const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+        // Verificar que todos los campos estén llenos
+        const { module, username, email, password } = formData;
+        if (!module || !username || !email || !password) {
+            setModalMessage("Todos los campos son requeridos.");
+            setModalType("error");
+            setShowModal(true);
+            return;
+        }
+
+        if (password === storedPassword) { // Usar el password del store para la validación
+            // Guardar en el store
+            dispatch({
+                type: "SAVE_FORM_DATA",
+                payload: { module, username, email, password },
+            });
+
+            // Mostrar modal de éxito
+            setModalMessage(`Bienvenido: ${titleCase(username)}`);
+            setModalType("success");
+        } else {
+            // No guardar en el store, mostrar error
+            setModalMessage("Username/Password incorrectos!!!");
+            setModalType("error");
+        }
+
         setShowModal(true);
-        console.log('datos del formulario', formData);
     };
 
     const onCloseModalInfo = () => {
         setShowModal(false);
+        resetForm(); // Opcional: reinicia el formulario después de cerrar el modal
     };
-
 
     return (
         <motion.div
@@ -35,12 +63,11 @@ const FormWithMotionAndHook = ({ titleForm }) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
-
             <ModalInfo
                 visible={showModal}
-                message="Formulario enviado!!!"
+                message={modalMessage}
                 onClose={onCloseModalInfo}
-
+                type={modalType} // "success" o "error"
             />
 
             <form onSubmit={handleSubmit}>
@@ -71,7 +98,7 @@ const FormWithMotionAndHook = ({ titleForm }) => {
                         </label>
                     </div>
                 </motion.div>
-                
+
                 <motion.div
                     initial={{ x: -100 }}
                     animate={{ x: 0 }}
@@ -139,4 +166,5 @@ const FormWithMotionAndHook = ({ titleForm }) => {
         </motion.div>
     );
 };
+
 export default FormWithMotionAndHook;

@@ -76,16 +76,17 @@
   z-index: 1000;
 }
 
+/* Success modal styles */
 .notification-success {
-  background-color: #efd6bd;
-  color: #cc8259;
-  padding: 2rem;
-  border: 1px solid #cc8259;
-  border-radius: 0.5rem;
+  background-color: #d4f7d4; /* Light green matching the screenshot */
+  color: #000000;           /* Black text for contrast */
+  padding: 1.5rem;
+  border-radius: 1rem;      /* Rounded corners as seen in the screenshot */
   max-width: 500px;
   width: 90%;
   text-align: center;
   position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 .close-btn-success {
@@ -94,7 +95,31 @@
   right: 0.5rem;
   background: transparent;
   border: none;
-  color: #7e4f1a;
+  color: #000000; /* Black text for close button */
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Error modal styles */
+.notification-error {
+  background-color: #ffd6d6; /* Light pink matching the screenshot */
+  color: #000000;           /* Black text for contrast */
+  padding: 1.5rem;
+  border-radius: 1rem;      /* Rounded corners to match the screenshot */
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.close-btn-error {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #000000; /* Black text for the close button */
   font-size: 1.5rem;
   cursor: pointer;
 }
