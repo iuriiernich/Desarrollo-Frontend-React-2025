@@ -53,7 +53,7 @@ const FormWithMotionAndHook = ({ titleForm }) => {
 
     const onCloseModalInfo = () => {
         setShowModal(false);
-        resetForm(); // Opcional: reinicia el formulario después de cerrar el modal
+        resetForm(); // Reiniciar el formulario después de cerrar el modal
     };
 
     return (
