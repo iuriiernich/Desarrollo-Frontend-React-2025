@@ -54,6 +54,12 @@ const FormWithMotionAndHook = ({ titleForm }) => {
         setShowModal(false);
     };
 
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prevState) => !prevState);
+    };
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -143,12 +149,19 @@ const FormWithMotionAndHook = ({ titleForm }) => {
                         <label>
                             Password:
                             <input
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 name="password"
                                 value={formData.password}
                                 onChange={handleChange}
                                 required
                             />
+                            <button
+                                type="button"
+                                onClick={togglePasswordVisibility}
+                                className="button-visibility"
+                            >
+                                {showPassword ? 'Hide' : 'Show'}
+                            </button>
                         </label>
                     </div>
                 </motion.div>
