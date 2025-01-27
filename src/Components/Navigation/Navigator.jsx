@@ -9,6 +9,7 @@ const Navigator = () => {
             <Link to="/think" className="nav-link">Think</Link>
             <Link to="/products" className="nav-link">Product</Link>
             <Link to="/about" className="nav-link">About</Link>
+            <Link to="/landingpage" className="nav-link">LandingPage</Link>
         </nav>
     );
 };
