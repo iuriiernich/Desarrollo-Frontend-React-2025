@@ -4,8 +4,8 @@ import useForm from "../Hooks/useForm.js";
 import ModalInfo from "../Modals/ModalInfo.jsx";
 
 // eslint-disable-next-line react/prop-types
-const FormWithMotionAndHook = ({titleForm}) => {
-    const {formData, handleChange} = useForm({
+const FormWithMotionAndHook = ({ titleForm }) => {
+    const { formData, handleChange } = useForm({
         username: '',
         email: ''
     });
@@ -25,31 +25,51 @@ const FormWithMotionAndHook = ({titleForm}) => {
 
     return (
         <motion.div
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            exit={{opacity: 0}}
-            transition={{duration: 0.5}}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
         >
 
-            <ModalInfo 
+            <ModalInfo
                 visible={showModal}
                 message="Formulario enviado!!!"
                 onClose={onCloseModalInfo}
-            
+
             />
 
             <form onSubmit={handleSubmit}>
                 <motion.div
-                    initial={{x: -100}}
-                    animate={{x: 0}}
-                    transition={{duration: 0.5}}
+                    initial={{ x: -100 }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 0.5 }}
                 >
                     <h3>{titleForm}</h3>
                 </motion.div>
+
                 <motion.div
-                    initial={{x: -100}}
-                    animate={{x: 0}}
-                    transition={{duration: 0.5}}
+                    initial={{ x: -100 }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <div>
+                        <label>
+                            Module:
+                            <input
+                                type="text"
+                                name="module"
+                                value={formData.module}
+                                onChange={handleChange}
+                                required
+                            />
+                        </label>
+                    </div>
+                </motion.div>
+                
+                <motion.div
+                    initial={{ x: -100 }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 0.5 }}
                 >
                     <div>
                         <label>
@@ -65,9 +85,9 @@ const FormWithMotionAndHook = ({titleForm}) => {
                     </div>
                 </motion.div>
                 <motion.div
-                    initial={{x: -100}}
-                    animate={{x: 0}}
-                    transition={{duration: 0.5}}
+                    initial={{ x: -100 }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 0.5 }}
                 >
                     <div>
                         <label>
@@ -82,10 +102,30 @@ const FormWithMotionAndHook = ({titleForm}) => {
                         </label>
                     </div>
                 </motion.div>
+
                 <motion.div
-                    initial={{y: 100}}
-                    animate={{y: 0}}
-                    transition={{duration: 0.5}}
+                    initial={{ x: -100 }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <div>
+                        <label>
+                            Password:
+                            <input
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                            />
+                        </label>
+                    </div>
+                </motion.div>
+
+                <motion.div
+                    initial={{ y: 100 }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.5 }}
                 >
                     <button type="submit">Enviar</button>
                 </motion.div>
