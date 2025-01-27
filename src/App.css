@@ -63,6 +63,7 @@
   color: #5378c3;
 }
 
+/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -74,6 +75,54 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+}
+
+.modal-content {
+  background-color: #efd6bd;
+  color: #cc8259;
+  padding: 2rem;
+  border: 1px solid #cc8259;
+  border-radius: 0.5rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+}
+
+.modal-content button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #e53935;
+}
+
+/* Estilo para el botón de cerrar (X) en la esquina superior derecha */
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #cc8259;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1100; /* Asegura que el botón esté encima de otros elementos */
+}
+
+.close-btn:hover {
+  color: #f44336; /* Cambiar el color al hacer hover */
 }
 
 /* Success modal styles */

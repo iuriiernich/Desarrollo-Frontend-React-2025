@@ -11,7 +11,7 @@ import { Routes, Route } from "react-router";
 const Router = () => {
     return (
         <Routes>
-            <Route index element={<LandingPage />} />
+            <Route index path="/" element ={<LandingPage />} />
             <Route path="home" element={<Home />} />
             <Route path="products" element={<Products />} />
             <Route path="think" element={<Think />} />

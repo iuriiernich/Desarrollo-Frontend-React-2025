@@ -6,6 +6,7 @@ import { titleCase } from "title-case";
 import useForm from "../Hooks/useForm.js";
 import ModalInfo from "../Modals/ModalInfo.jsx";
 
+
 // eslint-disable-next-line react/prop-types
 const FormWithMotionAndHook = ({ titleForm }) => {
     const { module, password: storedPassword } = useSelector((state) => state.form.loginForm);
@@ -36,7 +37,6 @@ const FormWithMotionAndHook = ({ titleForm }) => {
         if (password === storedPassword) { // Usar el password del store para la validación
             // Despachar la acción para guardar en el store
             dispatch(setFormData({ module, username, email, password }));  // Usamos setFormData de formSlice.js para actualizar el store
-
 
             // Mostrar modal de éxito
             setModalMessage(`Bienvenido: ${titleCase(username)}`);
