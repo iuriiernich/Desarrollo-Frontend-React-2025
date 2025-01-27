@@ -1,18 +1,23 @@
 import { useState } from "react"
+import { useSelector } from "react-redux";
 import { motion } from "motion/react"
 import useForm from "../Hooks/useForm.js";
 import ModalInfo from "../Modals/ModalInfo.jsx";
 
 // eslint-disable-next-line react/prop-types
 const FormWithMotionAndHook = ({ titleForm }) => {
+    const moduleValue = useSelector((state) => state.form.loginForm.module);
+
     const { formData, handleChange } = useForm({
+        module: moduleValue,
         username: '',
-        email: ''
+        email: '',
+        password: '',
     });
 
     const [showModal, setShowModal] = useState(false);
 
-    const handleSubmit = (e) => {
+      const handleSubmit = (e) => {
         e.preventDefault();
         setShowModal(true);
         console.log('datos del formulario', formData);
@@ -60,6 +65,7 @@ const FormWithMotionAndHook = ({ titleForm }) => {
                                 name="module"
                                 value={formData.module}
                                 onChange={handleChange}
+                                readOnly
                                 required
                             />
                         </label>
